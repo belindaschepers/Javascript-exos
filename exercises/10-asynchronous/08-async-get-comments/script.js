@@ -10,5 +10,21 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    document.getElementById("run").onclick = function (){
+        window.lib.getComments().then(async posts =>{ 
+            console.log(await posts);
+
+            const ids = []; 
+            for(const post of posts){ 
+                ids.push(post.id); 
+                for (const id of ids){ 
+                    window.lib.getComments().then((comments => {
+                        post.comments = comments; 
+                    }));
+                }
+             }    
+        })
+    }
+
+
 })();

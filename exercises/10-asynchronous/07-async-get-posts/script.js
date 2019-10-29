@@ -13,5 +13,6 @@
     document.getElementById("run").onclick = function (){
 
         window.lib.getPosts().then(async posts => console.log(await posts))
+        
         }
 })();

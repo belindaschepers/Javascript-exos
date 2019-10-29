@@ -10,5 +10,15 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    document.getElementById("run").onclick = function (){
+
+        fetch("http://localhost:3000/heroes")
+        .then((response) => response.json())
+        .then(function(response){
+            document.getElementById("target").innerHTML=
+
+        }
+    }
+
+    
 })();
