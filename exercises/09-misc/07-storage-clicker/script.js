@@ -13,27 +13,21 @@
 
     window.onload = window.localStorage.clear();
 
-    activeCounter ();
-
     function activeCounter() {
         let nbr = localStorage.getItem('on_click');
-
+ 
         if (nbr === null) {
             nbr = 0;
         }
-
-        nbr ++;
-
+         
+        nbr++;
+         
         localStorage.setItem("on_click", nbr);
-
+         
         document.getElementById('target').innerHTML = nbr;
-
-        document.getElementById('increment').addEventListener('click', active_counter);
-
-        activeCounter ();
-        
-     }
-
+    }
+     
+    document.getElementById('increment').addEventListener('click', activeCounter);
 
 
 })();

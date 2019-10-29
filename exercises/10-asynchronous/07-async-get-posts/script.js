@@ -10,5 +10,8 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    document.getElementById("run").onclick = function (){
+
+        window.lib.getPosts().then(async posts => console.log(await posts))
+        }
 })();

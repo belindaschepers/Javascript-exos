@@ -10,5 +10,16 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    let erreur = "Erreur de script";
+
+    document.getElementById("run").onclick = function (){
+
+        window.lib.getPersons((erreur, persons) => {
+            console.log (persons);
+            console.error(erreur);
+        });
+
+     }    
+        
+    
 })();
