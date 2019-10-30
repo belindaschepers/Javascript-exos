@@ -10,8 +10,8 @@
 // You will have time to focus on it later.
 
 (() => {
-    let template = document.querySelector("#tpl-hero").cloneNode(true);
-    let clone = document.importNode(template.content, true);
+    let templ = document.querySelector("#tpl-hero").cloneNode(true);
+    let clone = document.importNode(templ.content, true);
 
     document.getElementById("target").appendChild(clone);
 
@@ -21,15 +21,15 @@
         async function showInList(){
             try{
                 let reponse = await fetch ("http://localhost:3000/heroes");
-                let xmen = await reponse.json();
+                let characters = await reponse.json();
 
                 let name = document.querySelector(`.hero>.title>.name`);
                 let alterEgo = document.querySelector(`.hero>.title>.alter-ego`);
                 let powers = document.querySelector('.hero>.powers');
 
-                name.innerHTML = xmen[i].name;
-                alterEgo.innerHTML = xmen[i].alterEgo;
-                powers.innerHTML = xmen[i].abilities;
+                name.innerHTML = characters[i].name;
+                alterEgo.innerHTML = characters[i].alterEgo;
+                powers.innerHTML = characters[i].abilities;
             }
 
             catch(e){

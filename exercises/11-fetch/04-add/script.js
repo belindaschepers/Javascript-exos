@@ -13,17 +13,18 @@
     const insertCharacter = async function(data){
         let response = await fetch ('http://localhost:3000/heroes', 
         {
-            method : 'POST', 
+            method : 'POST', //methode pour mettre en ligne
             headers : {
                 'Content-type' : 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data) //convertir les données en json
 
         })
 
         let character = await response.json();
         console.log(character);
      }
+     
         let newCharacter = {};
 
         document.getElementById("run").addEventListener("click", ()=>{
@@ -38,11 +39,7 @@
             insertCharacter(newCharacter);
             alert(`Name: ${newCharacter.name}\n Alter Ego: ${newCharacter.alterEgo}\n Powers: ${newCharacter.abilities}`);
         }
-        
-        document.getElementById("hero-name").value = "";
-        document.getElementById("hero-alter-ego").value = "";
-        document.getElementById("hero-powers").value = "";
-        
+
     })
 
 })();

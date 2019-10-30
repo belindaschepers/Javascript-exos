@@ -14,21 +14,21 @@
 
         try{
             let response = await fetch("http://localhost:3000/heroes");
-            let xmen = await response.json();
-            console.log(xmen);
+            let characters = await response.json();
+            console.log(character);
 
             let template = document.querySelector("#tpl-hero").cloneNode(true);
 
-            for(let i=0; i<xmen.length; i++){
+            for(let i=0; i<characters.length; i++){
                 let clone = document.importNode(template.content , true);
                 document.getElementById("target").appendChild(clone);
                 let name = document.querySelector(`.hero:nth-child(${i+1})>.title>.name`);
                 let alterEgo = document.querySelector(`.hero:nth-child(${i+1})>.title>.alter-ego`);
                 let powers = document.querySelector(`.hero:nth-child(${i+1})>.powers`);
 
-                name.innerHTML = xmen[i].name + ' (id: ' + xmen[i].id + ')';
-                alterEgo.innerHTML = xmen[i].alterEgo;
-                powers.innerHTML = xmen[i].abilities;
+                name.innerHTML = characters[i].name + ' (id: ' + xmen[i].id + ')';
+                alterEgo.innerHTML = characters[i].alterEgo;
+                powers.innerHTML = characters[i].abilities;
             }
         }
 

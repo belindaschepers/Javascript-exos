@@ -10,5 +10,32 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    let showCharacter = async function(id){
+        let response = await fetch('http://localhost:3000/heroes' + "/" + id);
+        let character = await response.json();
+
+        console.log(character);
+    
+    }
+
+     let delCharacter = async function(id){
+        let response = await fetch('http://localhost:3000/heroes' + "/" + id,
+        
+        {
+            method:'DELETE' 
+        });
+
+        let deletedCharacter = await response.json();
+        console.log(deletedCharacter);
+
+     }
+
+     document.getElementById("run").addEventListener("click", ()=>{
+         let deleteId = document.getElementById("hero-id").value;
+         
+         showCharacter(deleteId);
+         delCharacter(deleteId);
+
+     })
+
 })();

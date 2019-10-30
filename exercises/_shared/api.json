@@ -20,15 +20,6 @@
       ]
     },
     {
-      "id": 3,
-      "name": "Beast",
-      "alterEgo": "Hank McCoy",
-      "abilities": [
-        "Genius-level intellect",
-        "Animal-like physiology with enhanced physical attributes and sharp claws and teeth"
-      ]
-    },
-    {
       "id": 4,
       "name": "Angel",
       "alterEgo": "Warren Worthington III",
@@ -54,6 +45,22 @@
         "fdsf"
       ],
       "id": 6
+    },
+    {
+      "name": "dsfsd",
+      "alterEgo": "sfds",
+      "abilities": [
+        "fds"
+      ],
+      "id": 7
+    },
+    {
+      "name": "fsfsf",
+      "alterEgo": "dsfds",
+      "abilities": [
+        "sfds"
+      ],
+      "id": 8
     }
   ]
 }
