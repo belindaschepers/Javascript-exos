@@ -10,5 +10,37 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    let template = document.querySelector("#tpl-hero").cloneNode(true);
+    let clone = document.importNode(template.content, true);
+
+    document.getElementById("target").appendChild(clone);
+
+    document.getElementById("run").addEventListener("click", ()=>{
+        let i = (document.getElementById("hero-id").value-1); //index commence à 0 , premier id=1 donc value -1
+
+        async function showInList(){
+            try{
+                let reponse = await fetch ("http://localhost:3000/heroes");
+                let xmen = await reponse.json();
+
+                let name = document.querySelector(`.hero>.title>.name`);
+                let alterEgo = document.querySelector(`.hero>.title>.alter-ego`);
+                let powers = document.querySelector('.hero>.powers');
+
+                name.innerHTML = xmen[i].name;
+                alterEgo.innerHTML = xmen[i].alterEgo;
+                powers.innerHTML = xmen[i].abilities;
+            }
+
+            catch(e){
+                console.log(e);
+
+            }
+        }
+
+            showInList();
+
+        })
+
+    
 })();

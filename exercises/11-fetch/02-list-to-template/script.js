@@ -10,15 +10,37 @@
 // You will have time to focus on it later.
 
 (() => {
-    document.getElementById("run").onclick = function (){
+    document.getElementById("run").addEventListener("click", async ()=>{
 
-        fetch("http://localhost:3000/heroes")
-        .then((response) => response.json())
-        .then(function(response){
-            document.getElementById("target").innerHTML=
+        try{
+            let response = await fetch("http://localhost:3000/heroes");
+            let xmen = await response.json();
+            console.log(xmen);
 
+            let template = document.querySelector("#tpl-hero").cloneNode(true);
+
+            for(let i=0; i<xmen.length; i++){
+                let clone = document.importNode(template.content , true);
+                document.getElementById("target").appendChild(clone);
+                let name = document.querySelector(`.hero:nth-child(${i+1})>.title>.name`);
+                let alterEgo = document.querySelector(`.hero:nth-child(${i+1})>.title>.alter-ego`);
+                let powers = document.querySelector(`.hero:nth-child(${i+1})>.powers`);
+
+                name.innerHTML = xmen[i].name + ' (id: ' + xmen[i].id + ')';
+                alterEgo.innerHTML = xmen[i].alterEgo;
+                powers.innerHTML = xmen[i].abilities;
+            }
         }
-    }
+
+            catch(e){
+                console.log(e);
+            }
+
+        
+        })
+
+        
+
 
     
 })();

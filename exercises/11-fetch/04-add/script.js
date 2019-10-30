@@ -10,5 +10,39 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    const insertCharacter = async function(data){
+        let response = await fetch ('http://localhost:3000/heroes', 
+        {
+            method : 'POST', 
+            headers : {
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        })
+
+        let character = await response.json();
+        console.log(character);
+     }
+        let newCharacter = {};
+
+        document.getElementById("run").addEventListener("click", ()=>{
+            newCharacter.name = document.getElementById("hero-name").value;
+            newCharacter.alterEgo = document.getElementById("hero-alter-ego").value;
+            newCharacter.abilities = document.getElementById("hero-powers").value.split(',');
+
+        if(newCharacter.name == ""|| newCharacter.alterEgo == ""|| newCharacter.abilities[0]==""){
+            alert("Vous n'avez pas rempli tous les champs");
+        }
+        else{
+            insertCharacter(newCharacter);
+            alert(`Name: ${newCharacter.name}\n Alter Ego: ${newCharacter.alterEgo}\n Powers: ${newCharacter.abilities}`);
+        }
+        
+        document.getElementById("hero-name").value = "";
+        document.getElementById("hero-alter-ego").value = "";
+        document.getElementById("hero-powers").value = "";
+        
+    })
+
 })();
